@@ -1,0 +1,28 @@
+[2026-02-21 17:26:43,588 | INFO]: Starting scan...
+[2026-02-21 17:26:46,185 | INFO]: Scan successfully return block regions
+[2026-02-21 17:26:46,186 | INFO]: Starting filter...
+[2026-02-21 17:26:48,913 | INFO]: Filter successfully return filtered detected blocks
+[2026-02-21 17:26:48,913 | INFO]: Converting detected blocks into json...
+[2026-02-21 17:26:48,914 | INFO]: Converter successfully stored detections in detection20260221172643.json
+[2026-02-21 17:26:48,914 | WARNING]: Deleting: detection20260221172137.json
+[2026-02-21 17:26:48,915 | WARNING]: Deleting: run_20260215225013.log
+[2026-02-21 17:26:48,915 | WARNING]: Deleting: run_20260215225014.log
+[2026-02-21 17:26:48,916 | WARNING]: Deleting: run_20260215225019.log
+[2026-02-21 17:26:48,916 | WARNING]: Deleting: run_20260215225039.log
+[2026-02-21 17:26:48,916 | WARNING]: Deleting: run_20260215232913.log
+[2026-02-21 17:26:48,917 | WARNING]: Deleting: run_20260221022041.log
+[2026-02-21 17:26:48,917 | WARNING]: Deleting: run_20260221022113.log
+[2026-02-21 17:26:48,917 | WARNING]: Deleting: run_20260221165243.log
+[2026-02-21 17:26:48,917 | WARNING]: Deleting: run_20260221165326.log
+[2026-02-21 17:26:48,918 | WARNING]: Deleting: run_20260221165346.log
+[2026-02-21 17:26:48,918 | WARNING]: Deleting: run_20260221165440.log
+[2026-02-21 17:26:48,918 | WARNING]: Deleting: run_20260221165707.log
+[2026-02-21 17:26:48,918 | WARNING]: Deleting: run_20260221171137.log
+[2026-02-21 17:26:48,918 | WARNING]: Deleting: run_20260221171227.log
+[2026-02-21 17:26:48,919 | WARNING]: Deleting: run_20260221171302.log
+[2026-02-21 17:26:48,919 | WARNING]: Deleting: run_20260221171355.log
+[2026-02-21 17:26:48,919 | WARNING]: Deleting: run_20260221171440.log
+[2026-02-21 17:26:48,919 | WARNING]: Deleting: run_20260221171635.log
+[2026-02-21 17:26:48,919 | WARNING]: Deleting: run_20260221171812.log
+[2026-02-21 17:26:48,920 | WARNING]: Deleting: run_20260221172042.log
+[2026-02-21 17:26:48,920 | WARNING]: Deleting: run_20260221172137.log
