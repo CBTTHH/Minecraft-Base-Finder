@@ -29,4 +29,5 @@ def kill_jobs(all=False):
         m.execute(f"\\killjob {job.job_id}")
 
 
-    
+def _help():
+    pass

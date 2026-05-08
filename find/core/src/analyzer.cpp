@@ -6,7 +6,7 @@ namespace fs = std::filesystem;
 
 // Constants
 const char* appdata = getenv("APPDATA");
-fs::path DIR_FINDINGS = fs::path (appdata)/".minecraft"/"minescript"/"find"/"data"/"findings";
+fs::path DIR_FINDINGS = fs::path(appdata) / ".minecraft" / "minescript" / "find" / "data" / "findings";
 
 const int GROUP_RADIUS = 3;
 
@@ -86,7 +86,7 @@ void neighbors(
 
 vector<string> sorted_files_in_dir(const fs::path& directory){
     vector<string> files_timestamp;
-    for (auto& file: fs::directory_iterator(DIR_FINDINGS)){
+    for (auto& file: fs::directory_iterator(directory)){
         files_timestamp.push_back(file.path().filename().string());
     }
     sort(files_timestamp.begin(), files_timestamp.end());
@@ -182,7 +182,3 @@ void analyzer(const vector<Cluster>& clusters){
     }
     toJson(blocks_found);
 }
-
-
-
-

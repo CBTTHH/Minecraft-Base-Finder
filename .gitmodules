@@ -1,0 +1,6 @@
+[submodule "find/external/nlohmann_json"]
+	path = find/external/nlohmann_json
+	url = https://github.com/nlohmann/json
+[submodule "find/external/pybind11"]
+	path = find/external/pybind11
+	url = https://github.com/pybind/pybind11

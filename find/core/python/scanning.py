@@ -2,9 +2,9 @@ import math
 import time
 
 import minescript as m
-import find.core.python.minescriptExtra as me
-import find.config.constants as C
+from find.core.python import minescriptExtra as me
 from find.core.python.logger import logger
+from find.config import constants as C
 
 
 def safe_await_loaded_region(x_min, z_min, x_max, z_max):

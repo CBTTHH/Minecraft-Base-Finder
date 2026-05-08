@@ -1,0 +1,15 @@
+[2026-04-27 18:44:33,315 | INFO]: Starting scan...
+[2026-04-27 18:44:36,347 | INFO]: Scan successfully return block regions
+[2026-04-27 18:44:36,347 | INFO]: Starting filter...
+[2026-04-27 18:44:39,809 | INFO]: Filter successfully return filtered detected blocks
+[2026-04-27 18:44:39,809 | INFO]: Converting detected blocks into json...
+[2026-04-27 18:44:39,810 | INFO]: Converter successfully stored detections in detection20260427184433.json
+[2026-04-27 18:44:39,811 | WARNING]: Deleting: run_20260221172401.log
+[2026-04-27 18:44:39,811 | WARNING]: Deleting: run_20260221172643.log
+[2026-04-27 18:44:39,811 | WARNING]: Deleting: run_20260307140757.log
+[2026-04-27 18:44:39,812 | WARNING]: Deleting: run_20260307141042.log
+[2026-04-27 18:44:39,812 | WARNING]: Deleting: run_20260307141349.log
+[2026-04-27 18:44:39,812 | WARNING]: Deleting: run_20260427182437.log
+[2026-04-27 18:44:39,812 | WARNING]: Deleting: run_20260427182444.log
+[2026-04-27 18:44:39,813 | WARNING]: Deleting: run_20260427182528.log
+[2026-04-27 18:44:39,813 | WARNING]: Deleting: run_20260427184042.log
