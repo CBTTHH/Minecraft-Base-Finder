@@ -92,4 +92,4 @@ def printSavedDIR():
     
     m.echo(f"{me.clr('p')}# Findings:")
     for finding in saved_findings_list:
-        m.echo(f"- {finding}")
+        m.echo(f"- {finding[:-5]}")

@@ -4,6 +4,7 @@ import minescript as m
 from core.python import FinderEngine_cpp
 from core.python import scanning
 from core.python import filtering
+from core.python.logger import setup_logger, cleanup_logger
 from core.python import converter
 from core.python import minescriptExtra as me
 
@@ -17,6 +18,8 @@ def runScanner(mode:str="default") -> None:
         mode (str): Choose between "default", "full", "sky", "surface", "underground". 
         Defaults to "full".
     """
+    # Initialize logger with fresh settings and a new log file
+    setup_logger()
     
     if   mode == "sky":
         args = C.Y_LEVEL_SEARCHING_SKY_TH, 
@@ -30,7 +33,6 @@ def runScanner(mode:str="default") -> None:
         args = (C.Y_LEVEL_SEARCHING_SURFACE_TH, C.Y_LEVEL_SEARCHING_UNDERGROUND_TH)
         
     m.echo(f"{me.clr('g')}Initiating {mode} scan...")
-    m.echo("new??")
     # Collect coords the current region
     block_regions = scanning.scan(*args)
     
@@ -44,4 +46,6 @@ def runScanner(mode:str="default") -> None:
     minecraft_dir = os.getcwd()
     FinderEngine_cpp.run(minecraft_dir)
     
+    # Remove handlers so the logger "ends" until the next scan
+    cleanup_logger()
     m.echo(f"{me.clr('g')}Finished scanning successfully")

@@ -1,9 +1,10 @@
 import os
 import json
+from datetime import datetime
 
 from find.config import constants as C
 from find.core.python.detection import Detection
-from find.core.python.logger import logger, logger_timestamp
+from find.core.python.logger import logger
 
 
 DETECTIONS_DIR = os.path.join("minescript", "find", "data", "detections")
@@ -35,7 +36,7 @@ def remove_oldest(oldest_file:str, file_type_list:list, file_type="json") -> Non
                 path = os.path.join(LOGS_DIR, file_name)
             
             if os.path.exists(path): 
-                logger.warning(f"Deleting: {oldest_file}")
+                logger.debug(f"Deleting: {oldest_file}")
                 os.remove(path)
             
             file_type_list.remove(oldest_file)
@@ -50,7 +51,7 @@ def to_json(detections:dict[str,Detection]) -> None:
     """
     logger.info("Converting detected blocks into json...")
     
-    timestamp = logger_timestamp
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
     total_detections = []
 
     for detection in detections.values():
@@ -80,4 +81,3 @@ def to_json(detections:dict[str,Detection]) -> None:
             
         files_number = max(len(detections_json_list), len(detections_log_list))
         
-

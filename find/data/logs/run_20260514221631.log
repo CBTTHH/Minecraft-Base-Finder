@@ -1,0 +1,17 @@
+[2026-05-14 22:16:31,995 | INFO]: Starting scan...
+[2026-05-14 22:16:33,057 | INFO]: Scan successfully return block regions
+[2026-05-14 22:16:33,057 | INFO]: Starting filter...
+[2026-05-14 22:16:33,365 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-14 22:16:33,371 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-14 22:16:33,560 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-14 22:16:33,765 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-14 22:16:33,814 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-14 22:16:33,862 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-14 22:16:33,881 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-14 22:16:33,907 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-14 22:16:33,908 | INFO]: Filter successfully return filtered detected blocks
+[2026-05-14 22:16:33,909 | INFO]: Converting detected blocks into json...
+[2026-05-14 22:16:33,909 | DEBUG]: Successfully converted into json file
+[2026-05-14 22:16:33,910 | INFO]: Converter successfully stored detections in detection20260514221633.json
+[2026-05-14 22:16:33,910 | DEBUG]: Deleting: detection20260514215710.json
+[2026-05-14 22:16:33,910 | DEBUG]: Deleting: run_20260514214512.log
