@@ -1,10 +1,12 @@
 import math
 import time
+import json
 
 import minescript as m
 from find.core.python import minescriptExtra as me
 from find.core.python.logger import logger
 from find.config import constants as C
+from find.config.config import SETTING_PATH
 
 
 def safe_await_loaded_region(x_min, z_min, x_max, z_max):
@@ -29,7 +31,10 @@ def scan(*y_level_thresholds:tuple[tuple[int,int]]) -> set[m.BlockRegion]:
     """
     logger.info("Starting scan...")
     
-    searching_r = C.SEARCHING_RADIUS
+    with open(SETTING_PATH, 'r') as f:
+        settings = json.load(f)
+    
+    searching_r = settings["searching_radius"]
     x, _, z = map(math.floor, m.player().position)
     
     player_chx = x // C.CHUNK_SIZE

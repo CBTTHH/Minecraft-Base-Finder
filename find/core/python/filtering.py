@@ -147,6 +147,7 @@ def filter_regions(block_regions:set[m.BlockRegion]) -> dict[str, Detection]:
                     detection_storage[block_type] += detection
     
     logger.info("Filter successfully return filtered detected blocks")
+    m.echo("Filtered successfully")
     return detection_storage 
 
               

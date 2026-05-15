@@ -1,25 +1,23 @@
-import os
 import time
 import threading
 
 import minescript as m 
-# from core. python import FinderEngine_cpp 
 from core.python import minescriptExtra as me
-from core.python import scanning
-from core.python import filtering
-from core.python import converter
-from config import constants as C
 
-
+from modes import printer
+from modes import saveDelete
+from modes import modConstants
+from modes import scanner
 
 MODES = { 
-    "print": (m.execute, "\\bot\\modes\\descend"),
-    "radius": (m.execute, "\\bot\\modes\\auto_miner"),
-    "save": (m.execute, "\\bot\\modes\\scan_only"),
-    "delete": (me.kill_jobs, None),
-    "scan": (me.kill_jobs, True),
-    "logger": (me._help, None),
-    "stop": (me.kill_jobs, True),
+    "scan"   : (scanner.runScanner,           0,  1),
+    "print"  : (printer.printList,            0,  3),
+    "save"   : (saveDelete.save,              1,  2),
+    "remove" : (saveDelete.remove,            1,  1),
+    "saved"  : (printer.printSavedDIR,        0,  0),
+    "radius" : (modConstants.changeRadius,    1,  1),
+    "logger" : (modConstants.DebugModeLogger, 1,  1),
+    "-help"  : (me._help,                     0,  0),
 }
 
 
@@ -32,66 +30,71 @@ def main_running() -> bool:
     
     for job in running_jobs:
         if (job.command == ["find\\main"]):
-            m.echo(f"{me.clr('y')}\nMain script is already running\n")
+            m.echo(f"{me.clr('y')}\nFinder Engine is already running...\n")
             return True
     return False
 
 
-def commands(msg:str):
-    if (not msg.startswith(".bot")):
+def commands(argv:str) -> None:
+    if (not argv.startswith("#finder")):
         return
     
-    msg = msg.replace(".", " ").replace("_", " ").split()
+    argv = argv.replace(".", " ").split()
+    argc = len(argv)
     
-    cmd = msg[1].lower()
+    cmd = argv[1].lower()
     
     if cmd in MODES:
-        m.echo(f"Running mode: {me.clr('p')}{cmd}")
-        try:
-            executor, cmd = MODES[cmd]
-            executor(cmd) if cmd else executor()
-        except BaseException as e:
-            m.echo(f"Error: {e}")
-            executor, cmd = MODES["stop all"]
-            executor(cmd) if cmd else executor()
+        executor, min_num_param, max_num_param = MODES[cmd]
+        if not(min_num_param <= argc - 2 <= max_num_param):
+            m.echo(f"{me.clr('y')}This function require at least {min_num_param} parameters or at most {max_num_param}...")
+            m.echo(f"{me.clr('y')}Get help typing: #finder -help")
+            return
             
+        for i in range(2, argc):
+            if   argv[i].isdigit():
+                argv[i] = int(argv[i])
+            elif argv[i].lower() == "true":
+                argv[i] = True
+            elif argv[i].lower() == "false":
+                argv[i] = False
             
+        executor(*argv[2:])
+                
     else: 
-        m.echo(f"Unrecognizable mode: {cmd}")
-        m.echo(f"{me.clr('y')}Get help typing: .bot help")
+        m.echo(f"{me.clr('y')}Unrecognizable mode: {cmd}")
+        m.echo(f"{me.clr('y')}Get help typing: #finder -help")
 
 
 def main():
+    if main_running():
+        return
+        
     stop_flag = False
     
-    m.echo(f"{me.clr('g')}Bot ACTIVATED\nUse: '.bot <mode>'")
+    m.echo(f"{me.clr('g')}Finder Engine ACTIVATED\nUse: '#finder <mode>'")
     
     with m.EventQueue() as events:
-        events.register_outgoing_chat_interceptor(prefix=".bot")
-        m.echo(f"{me.clr('g')}Type '.bot stop' to STOP the current process")
+        events.register_outgoing_chat_interceptor(prefix="#finder")
+        m.echo(f"{me.clr('g')}Type '#finder stop' to STOP the Engine")
     
         while (not stop_flag):
             event = events.get()
             
             if event.type == m.EventType.OUTGOING_CHAT_INTERCEPT:
                 message = event.message.strip().lower()
-                
-                if ".find stop" == message:
-                    m.echo(f"{me.clr('g')}STOPPING SCRIPT...")
+                                
+                if "#finder stop" == message:
+                    m.echo(f"{me.clr('g')}STOPPING ENGINE...")
                     stop_flag = True
+                    break
 
                 threading.Thread(target=commands,
-                                 args=(message),
+                                 args=(message,),
                                  daemon=True).start()
-            
         time.sleep(0.1)
-        
-           
-def main2():
-    block_regions = scanning.scan(C.Y_LEVEL_SEARCHING_SURFACE_TH, C.Y_LEVEL_SEARCHING_SKY_TH, C.Y_LEVEL_SEARCHING_UNDERGROUND_TH)
-    interesting_blocks = filtering.filter_regions(block_regions)
-    converter.to_json(interesting_blocks)
+            
     
 if __name__ == "__main__":
-    main2()
+    main()
 

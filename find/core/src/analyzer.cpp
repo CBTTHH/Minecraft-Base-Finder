@@ -4,10 +4,6 @@ using namespace std;
 using json = nlohmann::json;
 namespace fs = std::filesystem;
 
-// Constants
-const char* appdata = getenv("APPDATA");
-fs::path DIR_FINDINGS = fs::path(appdata) / ".minecraft" / "minescript" / "find" / "data" / "findings";
-
 const int GROUP_RADIUS = 3;
 
 const unordered_set<string> STRONG_BLOCKS = {
@@ -62,21 +58,27 @@ void neighbors(
     unordered_set<Vec3>& coords_seen, 
     Cluster& cluster
 ){
-    int x_main = coord_main.x, y_main = coord_main.y, z_main = coord_main.z;
+    vector<Vec3> stack;
+    stack.push_back(coord_main);
     coords_seen.insert(coord_main);
 
-    for (int dx = -GROUP_RADIUS; dx <= GROUP_RADIUS; dx++){
-        for (int dy = -GROUP_RADIUS; dy <= GROUP_RADIUS; dy++){
-            for (int dz = -GROUP_RADIUS; dz <= GROUP_RADIUS; dz++){
+    while(not stack.empty()){
+        Vec3 current = stack.back();
+        stack.pop_back();
+    
+        for (int dx = -GROUP_RADIUS; dx <= GROUP_RADIUS; dx++){
+            for (int dy = -GROUP_RADIUS; dy <= GROUP_RADIUS; dy++){
+                for (int dz = -GROUP_RADIUS; dz <= GROUP_RADIUS; dz++){
 
-                if (dx == 0 and dy == 0 and dz == 0) continue;
+                    if (dx == 0 and dy == 0 and dz == 0) continue;
 
-                Vec3 coord_neighbor = {x_main + dx, y_main + dy, z_main + dz};
+                    Vec3 coord_neighbor = {current.x + dx, current.y + dy, current.z + dz};
 
-                if (coords.contains(coord_neighbor) and not coords_seen.contains(coord_neighbor)){
-                    cluster.coords.push_back(coord_neighbor);
-                    coords_seen.insert(coord_neighbor);
-                    neighbors(coord_neighbor, coords, coords_seen, cluster);
+                    if (coords.contains(coord_neighbor) and not coords_seen.contains(coord_neighbor)){
+                        cluster.coords.push_back(coord_neighbor);
+                        coords_seen.insert(coord_neighbor);
+                        stack.push_back(coord_neighbor);
+                    }
                 }
             }
         }
@@ -94,7 +96,7 @@ vector<string> sorted_files_in_dir(const fs::path& directory){
 }
 
 
-void toJson(const unordered_map<string, Finding>& blocks){
+void toJson(const unordered_map<string, Finding>& blocks, const string& minecraft_dir){
     json data = {
         {"strong_blocks", json::array()},
         {"grouped_blocks", json::array()}
@@ -108,11 +110,13 @@ void toJson(const unordered_map<string, Finding>& blocks){
         }
     }
 
+    fs::path dir_findings = fs::path(minecraft_dir) / "minescript" / "find" / "data" / "findings";
+
     chrono::time_point now = chrono::floor<chrono::seconds>(chrono::system_clock::now());
     string timestamp = format("{:%Y%m%d%H%M%S}", now);
 
-    fs::create_directories(DIR_FINDINGS);
-    fs::path file_path = DIR_FINDINGS / ("findings_" + timestamp + ".json");
+    fs::create_directories(dir_findings);
+    fs::path file_path = dir_findings / ("findings_" + timestamp + ".json");
 
     ofstream json_file(file_path);
     if (json_file.is_open()){
@@ -122,8 +126,9 @@ void toJson(const unordered_map<string, Finding>& blocks){
         throw runtime_error("Cannot open file: " + file_path.string());
     }
 
-    while (sorted_files_in_dir(DIR_FINDINGS).size() > 5){
-        fs::path oldest_json_path = DIR_FINDINGS / sorted_files_in_dir(DIR_FINDINGS).back();
+
+    while (sorted_files_in_dir(dir_findings).size() > 5){
+        fs::path oldest_json_path = dir_findings / sorted_files_in_dir(dir_findings).front(); 
         if (fs::exists(oldest_json_path)){
             fs::remove(oldest_json_path);
             cout << "File: " << oldest_json_path << " was removed\n";
@@ -159,7 +164,7 @@ clustering(const unordered_map<string, Detection>& detections){
 }
 
 
-void analyzer(const vector<Cluster>& clusters){
+void analyzer(const vector<Cluster>& clusters, const string& minecraft_dir){
     unordered_map<string, Finding> blocks_found;
 
     for (auto& cluster: clusters){
@@ -180,5 +185,5 @@ void analyzer(const vector<Cluster>& clusters){
             blocks_found[block.type] = block;
         }
     }
-    toJson(blocks_found);
+    toJson(blocks_found, minecraft_dir);
 }

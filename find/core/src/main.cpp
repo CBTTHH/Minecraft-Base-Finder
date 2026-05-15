@@ -1,7 +1,7 @@
 #include "detection.hpp"
 #include "jsonLoader.hpp"
 #include "analyzer.hpp"
-#include <iostream> 
+#include <iostream>
 #include <filesystem>
 
 using namespace std;
@@ -26,7 +26,7 @@ void run_analysis() {
         vector<Cluster> clusters = clustering(detections);
 
         // Creating json file
-        analyzer(clusters);
+        analyzer(clusters, fs::path(appdata).string());
         
         cout << "Analysis complete. Output written to findings folder." << endl;
     } else {

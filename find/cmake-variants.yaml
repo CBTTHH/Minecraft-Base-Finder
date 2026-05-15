@@ -1,0 +1,30 @@
+python_version:
+  default: py313
+  choices:
+    py312:
+      short: "3.12"
+      long: "Python 3.12"
+      settings:
+        Python_EXECUTABLE: "C:/Users/zouda/AppData/Local/Programs/Python/Python312/python.exe"
+    py313:
+      short: "3.13"
+      long: "Python 3.13"
+      settings:
+        Python_EXECUTABLE: "C:/Users/zouda/AppData/Local/Programs/Python/Python313/python.exe"
+    py314:
+      short: "3.14"
+      long: "Python 3.14"
+      settings:
+        Python_EXECUTABLE: "C:/Users/zouda/AppData/Local/Programs/Python/Python314/python.exe"
+
+build_type:
+  default: release
+  choices:
+    debug:
+      short: Debug
+      settings:
+        CMAKE_BUILD_TYPE: Debug
+    release:
+      short: Release
+      settings:
+        CMAKE_BUILD_TYPE: Release

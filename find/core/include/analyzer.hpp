@@ -44,12 +44,10 @@ void neighbors(
 
 std::vector<std::string> sorted_files_in_dir(const std::filesystem::path& directory);
 
-void toJson(const std::unordered_map<std::string, Finding>& blocks);
-
+void toJson(const std::unordered_map<std::string, Finding>& blocks, const std::string& minecraft_dir);
 
 // Functions
 std::vector<Cluster> 
 clustering(const std::unordered_map<std::string, Detection>& detections);
 
-void analyzer(const std::vector<Cluster>& clusters);
-
+void analyzer(const std::vector<Cluster>& clusters, const std::string& minecraft_dir);
