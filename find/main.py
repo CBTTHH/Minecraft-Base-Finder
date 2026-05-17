@@ -60,7 +60,7 @@ def commands(argv:str) -> None:
                 argv[i] = False
             
         executor(*argv[2:])
-                
+            
     else: 
         m.echo(f"{me.clr('y')}Unrecognizable mode: {cmd}")
         m.echo(f"{me.clr('y')}Get help typing: #finder -help")
@@ -88,10 +88,13 @@ def main():
                     m.echo(f"{me.clr('g')}STOPPING ENGINE...")
                     stop_flag = True
                     break
+                
+                m.echo("=== BEGINNING ====================================")
 
                 threading.Thread(target=commands,
                                  args=(message,),
                                  daemon=True).start()
+                
         time.sleep(0.1)
             
     

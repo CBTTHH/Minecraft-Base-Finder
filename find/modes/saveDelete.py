@@ -6,7 +6,7 @@ from find.core.python import minescriptExtra as me
 from find.config import config
 from find.config import constants as C
 
-# .find save {custom name} # Save this list with all the coords 
+# .finder save {custom name} # Save this list with all the coords 
 def save(custom_name:str, index=1):
     if index < 1 or index > C.MAX_DETECTIONS:
         m.echo(f"{me.clr('y')}Out of range error: index should be between 1 and {C.MAX_DETECTIONS}")
@@ -24,7 +24,7 @@ def save(custom_name:str, index=1):
     m.echo(f"{me.clr('g')}'{custom_name}' is SAVED in findings folder")
     
     
-# .find remove {custom name} # Delete custom file (json) with the data
+# .finder remove {custom name} # Delete custom file (json) with the data
 def remove(custom_name:str):
     saved_finding_list = os.listdir(config.DIR_SAVED_FINDINGS)
 

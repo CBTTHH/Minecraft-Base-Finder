@@ -6,11 +6,11 @@ from find.core.python import minescriptExtra as me
 from find.config import config
 from find.config import constants as C
 
-# .find print 1                                        # Print last list (2, the one before the last list, this until 5, 
+# .finder print 1                                        # Print last list (2, the one before the last list, this until 5, 
 #                                                        since we are just saving the last 5 findings). 
-# .find print {custom name}                            # Print the saved file with the name 
-# .find print {custom name or number} {specific block} # Print all the coords of that specific block 
-# .find print {custom name or number} coords           # Prints each block with all their coords 
+# .finder print {custom name}                            # Print the saved file with the name 
+# .finder print {custom name or number} {specific block} # Print all the coords of that specific block 
+# .finder print {custom name or number} coords           # Prints each block with all their coords 
 
 def printList(
     index_or_name:int|str=1, 
@@ -82,7 +82,7 @@ def printList(
                 m.echo(f"x{block.get('total_size')} {block.get('type')}")
 
 
-# .find saved # Print all the custom names saved by the user 
+# .finder saved # Print all the custom names saved by the user 
 def printSavedDIR():
     saved_findings_list = sorted(os.listdir(config.DIR_SAVED_FINDINGS))
     

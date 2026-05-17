@@ -1,4 +1,4 @@
 {
-    "searching_radius": 8,
+    "searching_radius": 12,
     "logger_level": "warn"
 }

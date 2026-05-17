@@ -4,7 +4,7 @@ import minescript as m
 from core.python import FinderEngine_cpp
 from core.python import scanning
 from core.python import filtering
-from core.python.logger import setup_logger, cleanup_logger
+from core.python.logger import logger, setup_logger, cleanup_logger
 from core.python import converter
 from core.python import minescriptExtra as me
 
@@ -35,16 +35,20 @@ def runScanner(mode:str="default") -> None:
     m.echo(f"{me.clr('g')}Initiating {mode} scan...")
     # Collect coords the current region
     block_regions = scanning.scan(*args)
+    logger.info("Finished scanning...")
     
     # Filtering blocks to keep just common blocks in real bases
     interesting_blocks = filtering.filter_regions(block_regions)
+    logger.info("Finished filtering...")
     
     # Create a json to bridge python with C++ -> detections.json
     converter.to_json(interesting_blocks)
+    logger.info("Converted to json file (detections)...")
     
     # C++ analysis and clustering of blocks -> findings.json
     minecraft_dir = os.getcwd()
     FinderEngine_cpp.run(minecraft_dir)
+    logger.info("Finished C++ analysis, clustering and converting to json file (findings)...")
     
     # Remove handlers so the logger "ends" until the next scan
     cleanup_logger()
