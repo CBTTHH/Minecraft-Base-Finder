@@ -1,0 +1,205 @@
+[2026-05-17 21:12:16,346 | INFO]: Starting scan...
+[2026-05-17 21:12:16,349 | DEBUG]: Verifying radius 32...
+[2026-05-17 21:12:16,458 | INFO]: Reducing radius to 31
+[2026-05-17 21:12:16,458 | DEBUG]: Verifying radius 31...
+[2026-05-17 21:12:16,564 | INFO]: Reducing radius to 30
+[2026-05-17 21:12:16,564 | DEBUG]: Verifying radius 30...
+[2026-05-17 21:12:16,671 | INFO]: Reducing radius to 29
+[2026-05-17 21:12:16,671 | DEBUG]: Verifying radius 29...
+[2026-05-17 21:12:16,779 | INFO]: Reducing radius to 28
+[2026-05-17 21:12:16,779 | DEBUG]: Verifying radius 28...
+[2026-05-17 21:12:16,886 | INFO]: Reducing radius to 27
+[2026-05-17 21:12:16,886 | DEBUG]: Verifying radius 27...
+[2026-05-17 21:12:16,993 | INFO]: Reducing radius to 26
+[2026-05-17 21:12:16,995 | DEBUG]: Verifying radius 26...
+[2026-05-17 21:12:17,100 | INFO]: Reducing radius to 25
+[2026-05-17 21:12:17,101 | DEBUG]: Verifying radius 25...
+[2026-05-17 21:12:17,208 | INFO]: Reducing radius to 24
+[2026-05-17 21:12:17,208 | DEBUG]: Verifying radius 24...
+[2026-05-17 21:12:17,315 | INFO]: Reducing radius to 23
+[2026-05-17 21:12:17,315 | DEBUG]: Verifying radius 23...
+[2026-05-17 21:12:17,422 | INFO]: Reducing radius to 22
+[2026-05-17 21:12:17,422 | DEBUG]: Verifying radius 22...
+[2026-05-17 21:12:17,529 | INFO]: Reducing radius to 21
+[2026-05-17 21:12:17,529 | DEBUG]: Verifying radius 21...
+[2026-05-17 21:12:17,635 | INFO]: Reducing radius to 20
+[2026-05-17 21:12:17,636 | DEBUG]: Verifying radius 20...
+[2026-05-17 21:12:17,743 | INFO]: Reducing radius to 19
+[2026-05-17 21:12:17,743 | DEBUG]: Verifying radius 19...
+[2026-05-17 21:12:17,850 | INFO]: Reducing radius to 18
+[2026-05-17 21:12:17,850 | DEBUG]: Verifying radius 18...
+[2026-05-17 21:12:18,360 | INFO]: Verified radius 18. Collecting block data...
+[2026-05-17 21:12:24,617 | INFO]: Scan successfully completed at radius: 18
+[2026-05-17 21:12:24,617 | INFO]: Finished scanning...
+[2026-05-17 21:12:24,617 | INFO]: Starting filter...
+[2026-05-17 21:12:24,739 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:24,753 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:24,781 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:24,817 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:24,845 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:24,906 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:24,947 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:24,957 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:24,994 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,046 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,054 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,102 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,160 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,209 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,211 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,265 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,382 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,400 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,409 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,519 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,606 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,620 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,645 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,720 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,804 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,856 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,859 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,873 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,962 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:25,986 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,053 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,137 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,225 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,271 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,274 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,286 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,338 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,377 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,415 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,436 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,509 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,554 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,575 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,679 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,695 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,732 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,817 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,830 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,889 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,943 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:26,993 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,058 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,103 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,114 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,144 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,178 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,208 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,267 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,307 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,362 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,442 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,469 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,519 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,577 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,678 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,767 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,778 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,803 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,843 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,901 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,963 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:27,991 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,049 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,107 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,124 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,213 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,217 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,306 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,350 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,362 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,394 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,434 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,516 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,521 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,708 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,715 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,737 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,739 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,874 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,890 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,916 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,984 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:28,996 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,100 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,123 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,142 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,184 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,233 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,268 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,333 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,385 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,419 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,502 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,503 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,506 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,555 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,581 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,638 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,659 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,703 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,790 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,812 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,856 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,874 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:29,961 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,020 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,037 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,073 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,169 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,193 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,237 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,257 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,291 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,304 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,330 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,387 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,410 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,436 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,468 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,536 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,554 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,616 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,641 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,691 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,757 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,767 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,793 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,850 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,881 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,926 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,944 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,976 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:30,999 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,033 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,054 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,136 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,155 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,171 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,202 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,220 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,258 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,284 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,321 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,345 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,375 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,449 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,470 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,517 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,518 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,605 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,617 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,622 | DEBUG]: Successfully colleted local detection blocks
+[2026-05-17 21:12:31,623 | INFO]: Filter successfully return filtered detected blocks
+[2026-05-17 21:12:31,624 | INFO]: Finished filtering...
+[2026-05-17 21:12:31,624 | INFO]: Converting detected blocks into json...
+[2026-05-17 21:12:31,629 | DEBUG]: Successfully converted into json file
+[2026-05-17 21:12:31,631 | INFO]: Converter successfully stored detections in detection20260517211231.json
+[2026-05-17 21:12:31,632 | DEBUG]: Deleting: detection20260517204104.json
+[2026-05-17 21:12:31,632 | DEBUG]: Deleting: run_20260517204047.log
+[2026-05-17 21:12:31,633 | INFO]: Converted to json file (detections)...
+[2026-05-17 21:12:31,708 | INFO]: Finished C++ analysis, clustering and converting to json file (findings)...
