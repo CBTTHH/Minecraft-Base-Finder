@@ -6,8 +6,9 @@ from find.core.python import minescriptExtra as me
 from find.config import constants as C
 from find.config.config import SETTING_PATH
 
-with open(SETTING_PATH, 'r') as f:
-        setting = json.load(f)
+def _get_settings():
+    with open(SETTING_PATH, 'r') as f:
+        return json.load(f)
 
 # .finder radius {number between 4, 24} # Change the constant radius to the specify by the player, if it is more than 24, then set it to 24 and tell 
 # the player that it was set to 24 or if thats bellow 4, tell the player it was set to 4. 
@@ -15,6 +16,8 @@ def changeRadius(r:int) -> None:
     if not isinstance(r, int):
         m.echo(f"{me.clr('r')}Type Error: Radius needs to be a integer not a {type(r)}")
         return
+    
+    setting = _get_settings()
     
     if r > C.MAX_SEARCHING_RADIUS:
         r = C.MAX_SEARCHING_RADIUS
@@ -33,9 +36,11 @@ def changeRadius(r:int) -> None:
 
 # .finder logger {true or false} # Activate or deactivate logger prints in minecraft chat
 def DebugModeLogger(b: bool) -> None:
+    setting = _get_settings()
     
     if not isinstance(b, bool):
-        m.echo("Type Error: Boolean needs to be true or false")
+        m.echo(f"{me.clr('r')}Type Error: Boolean needs to be true or false")
+        return
     
     if b:
         setting["logger_level"] = "info"

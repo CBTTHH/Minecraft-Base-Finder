@@ -54,7 +54,7 @@ def commands(argv:str) -> None:
         for i in range(2, argc):
             if   argv[i].isdigit():
                 argv[i] = int(argv[i])
-            elif argv[i].lower() == "true":
+            elif argv[i].lower() == "true" or argv[i].lower() == "all":
                 argv[i] = True
             elif argv[i].lower() == "false":
                 argv[i] = False

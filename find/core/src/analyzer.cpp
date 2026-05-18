@@ -131,7 +131,7 @@ void toJson(const unordered_map<string, Finding>& blocks, const string& minecraf
         fs::path oldest_json_path = dir_findings / sorted_files_in_dir(dir_findings).front(); 
         if (fs::exists(oldest_json_path)){
             fs::remove(oldest_json_path);
-            cout << "File: " << oldest_json_path << " was removed\n";
+            // cout << "File: " << oldest_json_path << " was removed\n";
         }else{
             cout << "File path not found: " << oldest_json_path << "\n";
         }

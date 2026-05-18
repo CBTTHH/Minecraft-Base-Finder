@@ -4,7 +4,7 @@ import minescript as m
 from core.python import FinderEngine_cpp
 from core.python import scanning
 from core.python import filtering
-from core.python.logger import logger, setup_logger, cleanup_logger
+from core.python.logger import logger, setup_logger, _cleanup_logger
 from core.python import converter
 from core.python import minescriptExtra as me
 
@@ -22,11 +22,11 @@ def runScanner(mode:str="default") -> None:
     setup_logger()
     
     if   mode == "sky":
-        args = C.Y_LEVEL_SEARCHING_SKY_TH, 
+        args = (C.Y_LEVEL_SEARCHING_SKY_TH,)
     elif mode == "surface":
-        args = C.Y_LEVEL_SEARCHING_SURFACE_TH
+        args = (C.Y_LEVEL_SEARCHING_SURFACE_TH,)
     elif mode == "underground":
-        args = C.Y_LEVEL_SEARCHING_UNDERGROUND_TH
+        args = (C.Y_LEVEL_SEARCHING_UNDERGROUND_TH,)
     elif mode == "full":
         args = (C.Y_LEVEL_SEARCHING_SURFACE_TH, C.Y_LEVEL_SEARCHING_SKY_TH, C.Y_LEVEL_SEARCHING_UNDERGROUND_TH)
     else:
@@ -51,5 +51,5 @@ def runScanner(mode:str="default") -> None:
     logger.info("Finished C++ analysis, clustering and converting to json file (findings)...")
     
     # Remove handlers so the logger "ends" until the next scan
-    cleanup_logger()
+    _cleanup_logger()
     m.echo(f"{me.clr('g')}Finished scanning successfully")

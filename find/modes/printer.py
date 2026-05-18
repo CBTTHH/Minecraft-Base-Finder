@@ -15,9 +15,9 @@ from find.config import constants as C
 def printList(
     index_or_name:int|str=1, 
     block_or_all:str|bool=False, 
-    str_expanded:str=""
+    expanded:bool=False
     ):
-
+    
     dir_findings = ""
     finding_path = ""
     
@@ -38,6 +38,8 @@ def printList(
         finding_path = index_or_name + ".json"
         if not (finding_path in saved_findings_list):
             m.echo(f"{me.clr('y')}File {index_or_name} not found. Check your saved findings with '#finder saved'")
+            m.echo(f"{me.clr('y')}Usage: {me.clr('p')}#finder print [index_or_name] [block or all] [expanded]")
+            m.echo(f"{me.clr('y')}Example: {me.clr('p')}#finder print 1 beacon true")
             return
         dir_findings = config.DIR_SAVED_FINDINGS
     
@@ -46,13 +48,10 @@ def printList(
     
     block = None
     all_coords = False
-    expanded = False
     if   isinstance(block_or_all, str):
         block = block_or_all
     elif block_or_all == True:
         all_coords = True
-    if str_expanded == "all":
-        expanded = True
     
     if block or all_coords:
         found = False

@@ -3,43 +3,39 @@ import json
 from datetime import datetime
 
 from find.config import constants as C
+from find.config.config import DIR_DETECTIONS, DIR_LOGS
 from find.core.python.detection import Detection
 from find.core.python.logger import logger
 
 
-DETECTIONS_DIR = os.path.join("minescript", "find", "data", "detections")
-LOGS_DIR = os.path.join("minescript", "find", "data", "logs")
+os.makedirs(DIR_DETECTIONS, exist_ok=True)
 
-
-def oldest(files:str, file_type="json") -> str:
+def _oldest(files: list[str], file_type="json") -> str:
     db = {}
-    
     if file_type == "json":
         for file_name in files:
-            db[file_name.removeprefix("detection").removesuffix(".json")] = file_name
+            if file_name.startswith("detection"):
+                db[file_name.removeprefix("detection").removesuffix(".json")] = file_name
     else:
         for file_name in files:
-            db[file_name.removeprefix("run_").removesuffix(".log")] = file_name
-
-    oldest_timestamp = min({int(timestamp) for timestamp in db.keys()})
-    return db.get(str(oldest_timestamp))
+            if file_name.startswith("run_"):
+                db[file_name.removeprefix("run_").removesuffix(".log")] = file_name
     
-        
+    if not db: return None
+    oldest_timestamp = min(db.keys(), key=int)
+    return db.get(str(oldest_timestamp))
 
-def remove_oldest(oldest_file:str, file_type_list:list, file_type="json") -> None:
+def _remove_oldest(oldest_file: str, file_type_list: list, file_type="json") -> None:
     for file_name in file_type_list:
         if file_name.startswith(oldest_file):
-            
             if file_type == "json": 
-                path = os.path.join(DETECTIONS_DIR, file_name) 
+                path = os.path.join(DIR_DETECTIONS, file_name) 
             else: 
-                path = os.path.join(LOGS_DIR, file_name)
+                path = os.path.join(DIR_LOGS, file_name)
             
             if os.path.exists(path): 
                 logger.debug(f"Deleting: {oldest_file}")
                 os.remove(path)
-            
-            file_type_list.remove(oldest_file)
 
 
 def to_json(detections:dict[str,Detection]) -> None:
@@ -61,23 +57,21 @@ def to_json(detections:dict[str,Detection]) -> None:
     logger.debug("Successfully converted into json file")
     
     json_file = f"detection{timestamp}.json" 
-    with open(os.path.join(DETECTIONS_DIR, json_file), "w") as f:
+    with open(os.path.join(DIR_DETECTIONS, json_file), "w") as f:
         f.write(total_detections_json)
         logger.info(f"Converter successfully stored detections in {json_file}")
-        
-    detections_json_list = os.listdir(DETECTIONS_DIR)
-    detections_log_list = os.listdir(LOGS_DIR)
-    files_number = max(len(detections_json_list), len(detections_log_list))
 
-    while files_number > C.MAX_DETECTIONS:
-        
+    while True:
+        detections_json_list = os.listdir(DIR_DETECTIONS)
+        detections_log_list = os.listdir(DIR_LOGS)
+
+        if len(detections_json_list) <= C.MAX_DETECTIONS and len(detections_log_list) <= C.MAX_DETECTIONS:
+            break
+
         if len(detections_json_list) > C.MAX_DETECTIONS:
-            oldest_json_f = oldest(detections_json_list)
-            remove_oldest(oldest_json_f, detections_json_list)
-        
+            oldest_json_f = _oldest(detections_json_list)
+            _remove_oldest(oldest_json_f, detections_json_list)
+
         if len(detections_log_list) > C.MAX_DETECTIONS:
-            oldest_log_f = oldest(detections_log_list, "log")
-            remove_oldest(oldest_log_f, detections_log_list, "log")
-            
-        files_number = max(len(detections_json_list), len(detections_log_list))
-        
+            oldest_log_f = _oldest(detections_log_list, "log")
+            _remove_oldest(oldest_log_f, detections_log_list, "log")

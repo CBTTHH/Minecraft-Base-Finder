@@ -1,5 +1,4 @@
 import math
-import time
 import json
 
 import minescript as m
@@ -9,25 +8,22 @@ from find.config import constants as C
 from find.config.config import SETTING_PATH
 
 
-def safe_await_loaded_region(x_min, z_min, x_max, z_max):
-    start_t = time.perf_counter()
-    while True:
-        if m.await_loaded_region(x_min, z_min, x_max, z_max):
-            return True
-        if time.perf_counter() - start_t > C.MAX_TIME_AWAITING_REGION:
-            return False
-        time.sleep(C.ONE_TIME_TICK)
-        
-        
-def scan(*y_level_thresholds:tuple[tuple[int,int]]) -> set[m.BlockRegion]:
+def _safe_await_loaded_region(x_min, z_min, x_max, z_max):
     """
-    Docstring for scan
-    
-    :param y_level_thresholds: y level thresholds of the desire y-axis scan
-    :type y_level_scan: *tuple[int]
-    :return: set with all partial regions scanned
-    of the searching radius. The set is the total scanned region.
-    :rtype: set[BlockRegion]
+    Waits a snappy 2 ticks (0.1s) for the batch region to be loaded.
+    Allows rapid radius fallback if chunks are outside server bounds.
+    """
+    try:
+        m.await_loaded_region.as_async(x_min, z_min, x_max, z_max).wait(timeout=C.ONE_TIME_TICK * 2)
+        return True
+    except TimeoutError:
+        return False
+        
+        
+def scan(*y_level_thresholds: tuple[int, int]) -> set[m.BlockRegion]:
+    """
+    Scans the configured searching radius in batches. If an outer batch fails to 
+    load, dynamically falls back to smaller radii layers.
     """
     logger.info("Starting scan...")
     
@@ -41,63 +37,58 @@ def scan(*y_level_thresholds:tuple[tuple[int,int]]) -> set[m.BlockRegion]:
     player_chz = z // C.CHUNK_SIZE
     
     while searching_r > 0:
-        
         start_chx = player_chx - searching_r + 1
         start_chz = player_chz - searching_r + 1
-
-        curr_chx = start_chx
-        curr_chz = start_chz
-        
         end_chx = player_chx + searching_r + 1
         end_chz = player_chz + searching_r + 1
         
-        searching_times = math.ceil(searching_r * 2 / C.BATCH_SIZE)
-        
         failed = False
-        block_region_storage = set()
-                    
-        for _ in range(searching_times):
-            for _ in range(searching_times):
+        
+        logger.debug(f"Verifying radius {searching_r}...")
+        for curr_chz in range(start_chz, end_chz, C.BATCH_SIZE):
+            for curr_chx in range(start_chx, end_chx, C.BATCH_SIZE):
                 
                 block_x_min = curr_chx * C.CHUNK_SIZE
                 block_z_min = curr_chz * C.CHUNK_SIZE
                 
-                block_x_max = min(curr_chx + C.BATCH_SIZE, end_chx) * C.CHUNK_SIZE 
-                block_z_max = min(curr_chz + C.BATCH_SIZE, end_chz) * C.CHUNK_SIZE 
+                block_x_max = (min(curr_chx + C.BATCH_SIZE, end_chx) * C.CHUNK_SIZE) - 1
+                block_z_max = (min(curr_chz + C.BATCH_SIZE, end_chz) * C.CHUNK_SIZE) - 1
                 
-                if not safe_await_loaded_region(
+                if not _safe_await_loaded_region(
                     block_x_min, block_z_min, 
                     block_x_max, block_z_max
                 ):
-                    logger.warning(f"{me.clr('y')}Batch failed at radius {searching_r}")
                     failed = True
-                    break
-                
-                for dy in y_level_thresholds:
-                    
-                    block_region = m.get_block_region(
-                        (block_x_min, dy[0], block_z_min),
-                        (block_x_max, dy[1], block_z_max)
-                    )
-                    
-                    block_region_storage.add(block_region)
-                    
-                curr_chx += C.BATCH_SIZE 
-            
+                    break 
             if failed: break
-            
-            curr_chz += C.BATCH_SIZE
-            curr_chx = start_chx
         
         if not failed:
-            logger.info("Scan successfully return block regions")
+            logger.info(f"Verified radius {searching_r}. Collecting block data...")
+            m.echo(f"{me.clr('g')}Loading radius {searching_r} chunks...")
+            
+            block_region_storage = set()
+            for curr_chz in range(start_chz, end_chz, C.BATCH_SIZE):
+                for curr_chx in range(start_chx, end_chx, C.BATCH_SIZE):
+                    
+                    block_x_min = curr_chx * C.CHUNK_SIZE
+                    block_z_min = curr_chz * C.CHUNK_SIZE
+                    block_x_max = (min(curr_chx + C.BATCH_SIZE, end_chx) * C.CHUNK_SIZE) - 1
+                    block_z_max = (min(curr_chz + C.BATCH_SIZE, end_chz) * C.CHUNK_SIZE) - 1
+
+                    for dy in y_level_thresholds:
+                        block_region = m.get_block_region(
+                            (block_x_min, dy[0], block_z_min),
+                            (block_x_max, dy[1], block_z_max)
+                        )
+                        block_region_storage.add(block_region)
+            
+            logger.info(f"Scan successfully completed at radius: {searching_r}")
             return block_region_storage
 
         searching_r -= 1
-        logger.warning(f"Reducing radius to {searching_r}")
+        logger.info(f"Reducing radius to {searching_r}")
         m.echo(f"{me.clr('y')}Reducing radius to {searching_r}")
         
     logger.error("Scan failed completely. No chunks loaded.")
     m.echo(f"{me.clr('r')}Scan failed completely. No chunks loaded.")
     return set()
-        

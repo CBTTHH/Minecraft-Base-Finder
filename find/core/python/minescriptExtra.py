@@ -40,13 +40,12 @@ def _help():
     m.echo(f"  - {clr('p')}coords: show all blocks with cluster centers.")
     m.echo(f"  - {clr('p')}all: expand to show every individual coordinate.")
     m.echo(f"  - {clr('a')}Ex: #finder print 1 furnace all")
+    m.echo("")
     m.echo(f"save [name] [idx]{clr()} - Save finding (default index 1) with a custom name.")
     m.echo(f"remove [name]{clr()} - Delete a custom saved finding.")
     m.echo(f"saved{clr()} - List all your saved custom findings.")
-    m.echo(f"radius [4-24]{clr()} - Set the scanning radius in blocks.")
-    m.echo(f"logger [true/false]{clr()} - Enable or disable debug logs in chat.")
+    m.echo(f"radius [4-{C.MAX_SEARCHING_RADIUS}]{clr()} - Set the scanning radius in blocks.")
+    m.echo(f"logger [true/false]{clr()} - Toggle chat logs for search process.")
     m.echo(f"stop{clr()} - Stop and deactivate the Finder Engine.")
     m.echo("")
     m.echo(f"{clr('p')}==========================")
-
-
