@@ -1,0 +1,8 @@
+**/__pycache__/
+**/build
+**/.vscode
+find/data/detection/*
+find/data/findings/*
+find/data/findings_saved/*
+todo.md
+issues.txt
